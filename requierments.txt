@@ -1,0 +1,16 @@
+numpy
+h5py
+tqdm
+keras>=2.3.0
+tensorflow>=2.2
+opencv-python
+tqdm
+mlflow
+scikit-learn
+matplotlib
+scikit-image
+streamlit
+Flask
+requests_toolbelt
+requests
+fastapi
