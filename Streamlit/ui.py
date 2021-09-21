@@ -13,11 +13,7 @@ response = requests.post(server_url)
 process_response = requests.post(process_url)
 
 def process(file, pre_process, url: str):
-    """
-    img = cv2.imread('lena.jpg')
-    # encode image as jpeg
-    _, img_encoded = cv2.imencode('.jpg', img)
-    """
+
     content_type = 'image/jpeg'
     headers = {'content-type': content_type}
 
@@ -28,7 +24,6 @@ def process(file, pre_process, url: str):
                       data=img_encoded.tostring(),
                       headers=headers,
                       timeout=5000)
-
     return r
 
 
@@ -55,4 +50,3 @@ with st.form(key='segmentation'):
                         responsed = process(file, pre_process, process_url)
                         print(responsed)
                         print(responsed.content)
-                        st.image(responsed, use_column_width=True)
