@@ -25,6 +25,9 @@ in terminal, also you can run `main.py` to start the application, as well as men
 after that application will be serving on `Local URL` http://localhost:8501
 and `Network URL` http://192.168.1.6:8501. flask will serve on port `:5000`
 
+## Notes
+you can use pretrained weights for models from here:   
+https://github.com/pejmanS21/LungSegmentation_Streamlit/tree/master/weigths
 
 
 
