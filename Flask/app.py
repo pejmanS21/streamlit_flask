@@ -6,6 +6,7 @@ from vae import decoder
 from visualization import request_handler, service, visualize_vae
 from flask import Flask, request, Response, render_template
 
+# path to pretrained_weights that stored in weights directory
 model_unet = unet(pretrained_weights='../weigths/cxr_seg_unet.hdf5')
 model_runet = ResUNet(pretrained_weights='../weigths/cxr_seg_res_unet.hdf5')
 model_decoder = decoder(pretrained_weights='../weigths/decoder.hdf5')
