@@ -5,8 +5,15 @@ from PIL import Image, ImageOps
 
 reference_shape = (256, 256, 1)
 
-
+"""
+    Image that showed in sidebar menu of streamlit
+"""
 def stream_data(file, pre_process="Original", dim=256):
+    """
+        :file:  path that pointed to the uploaded image in streamlit
+        :pre_process:   Original or DHE for image
+        :dim:  size for image
+    """
     image = Image.open(file)
     image = ImageOps.fit(image, (dim, dim))
     image = np.asarray(image)
@@ -28,7 +35,9 @@ def stream_data(file, pre_process="Original", dim=256):
     image = image / 255.
     return image
 
-
+"""
+    process for image that will be sent to backend
+"""
 def load_data(file, pre_process="Original", dim=256):
     image = Image.open(file)
     image = ImageOps.fit(image, (dim, dim))
