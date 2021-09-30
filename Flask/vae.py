@@ -9,13 +9,19 @@ from tensorflow.keras.models import Model
 # from tensorflow.keras import backend as K
 # import tensorflow.compat.v1.keras.backend as K
 # tf.compat.v1.disable_eager_execution()
+from base_classes import SegmentationModel
 import matplotlib.pyplot as plt
 
 input_shape = (256, 256, 1)
 latent_dim = 2
 
-
+"""decoder layer of VAE Network"""
 def decoder(pretrained_weights=None):
+    """
+    :param: load pretrained_weights and 
+            set vae range and number of outputs 
+            to create new data
+    """
     latent_dim = 2
     decoder_input = Input(shape=(latent_dim, ), name='decoder_input')
 
@@ -31,4 +37,3 @@ def decoder(pretrained_weights=None):
         model.load_weights(pretrained_weights)
 
     return model
-
