@@ -89,13 +89,13 @@ if output_ready:
         st.write("""
                     ### {} iamges in range [-{}, +{}]
                     """.format(output_number ** 2, vae_range, vae_range))
-        st.image('images/output_vae.png', use_column_width=True)
+        st.image('../images/output_vae.png', use_column_width=True)
         st.success('images successfully generated! :thumbsup:')
 
     else:
         st.write("""
                     ### input CXR and detected lung
                     """)
-        visualize_output(processed_image, 'images/output.png')
-        st.image('images/output.png')
+        visualize_output(processed_image, '../images/output.png')
+        st.image('../images/output.png')
         st.success('Mask detected successfully! :thumbsup:')

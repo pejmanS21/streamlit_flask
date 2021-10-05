@@ -13,4 +13,4 @@ streamlit
 Flask
 requests_toolbelt
 requests
-fastapi
+jsonpickle

@@ -2,7 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
-
+"""
+    get inputed CXR image and path to created_mask and attached them together as PNG.  
+"""
 def visualize_output(processed_image, output_image_path):
     output_figure = np.zeros((processed_image.shape[1] * processed_image.shape[0], processed_image.shape[2] * 2, 1))
     mask = cv2.imread(output_image_path, cv2.IMREAD_GRAYSCALE).reshape(256, 256, 1)
@@ -12,9 +14,12 @@ def visualize_output(processed_image, output_image_path):
 
     fig_shape = np.shape(output_figure)
     output_figure = output_figure.reshape((fig_shape[0], fig_shape[1]))
-    cv2.imwrite('images/output.png', output_figure)
+    cv2.imwrite('../../images/output.png', output_figure)
 
 
+"""
+    attached created images from VAE save as PNG.
+"""
 def visualize_vae(decoder, output_number, vae_range):
     dim = 256
     figure = np.zeros((dim * output_number, dim * output_number, 1))
@@ -39,6 +44,9 @@ def visualize_vae(decoder, output_number, vae_range):
     return figure
 
 
+"""
+    Handle all requests from frontend (Streamlit) to backend (FLask)
+"""
 def request_handler(request):
     r = request
     nparr = np.fromstring(r.data, np.uint8)
@@ -48,7 +56,9 @@ def request_handler(request):
     img = (img - 127.) / 127.
     return img
 
-
+"""
+    here machine predict mask for CXR image
+"""
 def service(model, image):
     mask = model.predict(image)
-    cv2.imwrite('../images/output.png', mask[0] * 255.)
+    cv2.imwrite('../../images/output.png', mask[0] * 255.)

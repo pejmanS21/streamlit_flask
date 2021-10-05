@@ -7,11 +7,11 @@ from visualization import request_handler, service, visualize_vae
 from flask import Flask, request, Response, render_template
 
 # path to pretrained_weights that stored in weights directory
-model_unet = Unet_Builder(pretrained_weights='../weigths/cxr_seg_unet.hdf5',
+model_unet = Unet_Builder(pretrained_weights='../../weigths/cxr_seg_unet.hdf5',
                           input_size=(256, 256, 1))
-model_runet = ResUnet_Builder(pretrained_weights='../weigths/cxr_seg_res_unet.hdf5',
+model_runet = ResUnet_Builder(pretrained_weights='../../weigths/cxr_seg_res_unet.hdf5',
                               input_size=(256, 256, 1))
-model_decoder = decoder(pretrained_weights='../weigths/decoder.hdf5')
+model_decoder = decoder(pretrained_weights='../../weigths/decoder.hdf5')
 
 app = Flask(__name__)
 
@@ -57,7 +57,7 @@ def vae():
     vae_range, output_number = r['vae_range'], r['output_number']
     if (vae_range != 0) and (output_number != 0):
         fig = visualize_vae(model_decoder, output_number, vae_range)
-        cv2.imwrite('../images/output_vae.png', fig * 255.)
+        cv2.imwrite('../../images/output_vae.png', fig * 255.)
 
     response = {'message': "decoded image saved successfully!"}
 
